@@ -1,9 +1,10 @@
 import requests
 import time
 import json
+import os
 from pymongo import MongoClient
 
-API_KEY = "5550404d8c3545d995eee4473cfd41cd"
+API_KEY = os.environ.get("ZYTE_API_KEY")
 PROJECT_ID = "824854"
 SPIDER_NAME = "bookspider"
 
@@ -144,7 +145,7 @@ def get_mongo_collection():
     - Ensures 'upc' field has a unique index.
     Returns the 'books' collection handle.
     """
-    password = "7zejV520X22r1HMx"
+    password = os.environ.get("MONGO_PASSWORD")
     uri = f"mongodb+srv://test:{password}@book-scraper.i3nbzid.mongodb.net/?retryWrites=true&w=majority&appName=book-scraper"
 
     while True:
